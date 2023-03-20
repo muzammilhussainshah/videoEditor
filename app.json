@@ -1,4 +1,8 @@
 {
   "name": "VideoEditor",
-  "displayName": "VideoEditor"
+  "displayName": "VideoEditor",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-1601119629148767~2082471302",
+    "ios_app_id": "ca-app-pub-1601119629148767~2082471302"
+  }
 }

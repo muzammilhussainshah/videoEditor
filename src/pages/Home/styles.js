@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
     title: (fontSize) => ({ fontSize: fontSize, color: Colors.Primaryfontcolor, fontWeight: 'bold', textAlign: 'center', marginBottom: RFPercentage(2) }),
 
     cartContainer: { flex: 1, backgroundColor: Colors.primary, borderRadius: RFPercentage(1), margin: RFPercentage(.5), justifyContent: 'center', alignItems: 'center' },
-    footerContainer: { flex: 2.5, flexDirection: 'row', paddingHorizontal: RFPercentage(1), justifyContent: "space-between" },
+    footerContainer: { flex: 2.5, paddingHorizontal: RFPercentage(1), justifyContent: "space-between" },
     featureContainer: { flex: 6, paddingVertical: RFPercentage(1) },
+    footerBtnContainer: { justifyContent: 'space-between', alignItems: 'center' },
+    bannerContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
