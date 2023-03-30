@@ -16,6 +16,8 @@ import Colors from '../../styles/Colors';
 import { FeatureCart, Header, onShare, rateUs } from './Components/Component';
 import { styles } from './styles';
 import { AppOpenAd, InterstitialAd, RewardedAd, BannerAd, TestIds, BannerAdSize, AdEventType, RewardedAdEventType } from 'react-native-google-mobile-ads';
+import ImagePicker from 'react-native-image-crop-picker';
+import { FFmpegKit } from 'ffmpeg-kit-react-native';
 
 
 const adUnitId = TestIds.INTERSTITIAL;
@@ -29,17 +31,41 @@ const Home = ({ navigation }) => {
 
   const [loder, setloader] = useState(false)
 
-  useEffect(() => {
-    const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
-      interstitial.show();
-    });
-    // Start loading the interstitial straight away
-    interstitial.load();
-    // Unsubscribe from events on unmount
-    return unsubscribe;
+  // useEffect(() => {
+  //   const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
+  //     interstitial.show();
+  //   });
+  //   // Start loading the interstitial straight away
+  //   interstitial.load();
+  //   // Unsubscribe from events on unmount
+  //   return unsubscribe;
 
-  }, [])
+  // }, [])
 
+const trimVideo = ()=>{
+  ImagePicker.openPicker({
+    mediaType: "video",
+    compressVideoPreset:'Passthrough'
+
+  }).then((video) => {
+    navigation.navigate('TrimVideo', {source:video});
+    // console.log(video);
+  });
+
+  // const inputPath = '/Users/muzammil/Library/Developer/CoreSimulator/Devices/C597D11A-0F2C-4C3E-9582-B60A7CCFBDF3/data/Media/DCIM/100APPLE/1.MP4';
+  // const outputPath = '/Users/muzammil/Library/Developer/CoreSimulator/Devices/C597D11A-0F2C-4C3E-9582-B60A7CCFBDF3/data/Media/DCIM/trimmed/video.mp4';
+  // const ffmpegCommand = `-i ${inputPath} -ss 00:00:02 -to 00:00:04 -async 1 -strict -2 ${outputPath}`;
+  
+  // FFmpegKit.executeAsync(ffmpegCommand).then((executionId) => {
+  //   // Handle execution result
+  // }).catch((error) => {
+  //   // Handle error
+  // });
+  
+
+
+  
+}
   const trimIcon = <MaterialCommunityIcons size={RFPercentage(6)} color={Colors.Primaryfontcolor} name={'scissors-cutting'} />
   const folderIcon = <MaterialIcons size={RFPercentage(10)} color={Colors.Primaryfontcolor} name={'folder-special'} />
   const videoIcon = <Entypo size={RFPercentage(6)} color={Colors.Primaryfontcolor} name={'video-camera'} />
@@ -52,7 +78,7 @@ const Home = ({ navigation }) => {
       <View style={styles.featureContainer}>
         <FeatureCart size={2.5} icon={folderIcon} title="My Folder" />
         <View style={{ flexDirection: 'row', flex: 1 }}>
-          <FeatureCart size={1.8} icon={trimIcon} title="Trim Video" />
+          <FeatureCart onPress={()=>trimVideo()} size={1.8} icon={trimIcon} title="Trim Video" />
           <FeatureCart size={1.8} icon={videoIcon} title="Create Video" />
           <FeatureCart size={1.8} icon={recordIcon} title="Create Audio" />
         </View>

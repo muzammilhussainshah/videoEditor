@@ -22,9 +22,9 @@ export const Header = ({ navigation }) => {
     );
 };
 
-export const FeatureCart = ({ icon, title, size }) => {
+export const FeatureCart = ({ icon, title, size,onPress }) => {
     return (
-        <TouchableOpacity activeOpacity={.9} style={styles.cartContainer}>
+        <TouchableOpacity onPress={onPress} activeOpacity={.9} style={styles.cartContainer}>
             {icon}
             <Text style={styles.title(RFPercentage(size))}>{title}</Text>
         </TouchableOpacity>

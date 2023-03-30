@@ -25,8 +25,12 @@ const SplashScreen = ({ navigation }) => {
   const imgPath2 = useMemo(() => ("https://static.vecteezy.com/system/resources/previews/009/313/997/original/interface-of-sound-and-video-editor-on-screen-free-png.png"), [])
 
   useEffect(() => {
-    setTimeout(() => { setloader(true) }, 1000);
-    setTimeout(() => { navigation.navigate('Home') }, 5000);
+    // setTimeout(() => {
+       setloader(true) 
+      // }, 1000);
+    // setTimeout(() => {
+       navigation.navigate('Home') 
+  // }, 5000);
   }, [])
 
   return (
